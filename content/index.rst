@@ -1,13 +1,38 @@
-LESSON NAME
-===========
+Introduction to Quantum Computing and hybrid HPC-QC systems
+===========================================================
 
-Intro
+Recent developments in quantum technology are bringing the world
+closer to a new technological revolution – the advent of usable
+quantum computers able to provide enormous acceleration to important
+computational tasks. In coming years, quantum computing is expected to
+have a huge impact on practically all areas of research that can
+utilise computational modelling.
+
+Starting operations in April this year, the NordΙQuEst project brings
+together a consortium of seven partners from five Nordic and Baltic
+countries to connect world-leading traditional HPC resources and
+quantum computers across national borders with the aim to establish a
+quantum computing platform customised to the needs of the region.
 
 
+ENCCS is now joining forces with NordIQuEst to deliver two-day
+training workshops covering the fundamentals of quantum computing (QC),
+including:
+
+- Introduction to key concepts: quantum states, qubits, quantum algorithms
+- QC programming in high-level languages for use cases in
+  optimisation, finance and quantum chemistry followed by testing
+  quantum programs to esure their correctness
+- Overview of the main QC hardware approaches
+- Integration of QC with classical computing: hybrid classical/quantum
+  algorithms and HPC-QC systems.
 
 .. prereq::
 
-   prerequisites
+   For the hands-on training sessions, basic familiarity with Python
+   and some experience working in a Unix environment are desirable. No
+   previous experience with quantum computers expected.
+
 
 
 
@@ -15,13 +40,20 @@ Intro
    :widths: auto
    :delim: ;
 
-   20 min ; :doc:`filename`
+   20 min ; :doc:`intro`
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Preparation
+
+   installation
 
 .. toctree::
    :maxdepth: 1
    :caption: The lesson
 
+   intro   
 
 .. toctree::
    :maxdepth: 1
@@ -37,12 +69,15 @@ Intro
 Who is the course for?
 ----------------------
 
+This training material is for anyone interested in learning the basics
+of Quantum Computing.
 
 
 
 
 About the course
 ----------------
+
 
 
 
@@ -59,11 +94,11 @@ See also
 Credits
 -------
 
-The lesson file structure and browsing layout is inspired by and derived from
-`work <https://github.com/coderefinery/sphinx-lesson>`_ by `CodeRefinery
-<https://coderefinery.org/>`_ licensed under the `MIT license
-<http://opensource.org/licenses/mit-license.html>`_. We have copied and adapted
-most of their license text.
+The lesson file structure and browsing layout is inspired by and
+derived from `work <https://github.com/coderefinery/sphinx-lesson>`_
+by `CodeRefinery <https://coderefinery.org/>`_ licensed under the `MIT
+license <http://opensource.org/licenses/mit-license.html>`__. We have
+copied and adapted most of their license text.
 
 Instructional Material
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -106,4 +141,4 @@ Software
 
 Except where otherwise noted, the example programs and other software provided
 with this repository are made available under the `OSI <http://opensource.org/>`_-approved
-`MIT license <https://opensource.org/licenses/mit-license.html>`_.
+`MIT license <https://opensource.org/licenses/mit-license.html>`__.
