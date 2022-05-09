@@ -47,7 +47,7 @@ including:
    :maxdepth: 1
    :caption: Preparation
 
-   installation
+   setup
 
 .. toctree::
    :maxdepth: 1
