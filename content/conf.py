@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
+project = "Introduction to Quantum Computing & Hybrid HPC-QC Systems"
 copyright = "2021, The contributors"
 author = "The contributors"
 github_user = "ENCCS"
