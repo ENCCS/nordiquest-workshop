@@ -41,6 +41,7 @@ including:
    :delim: ;
 
    20 min ; :doc:`intro`
+   20 min ; :doc:`quantum_states`
 
 
 .. toctree::
@@ -54,7 +55,8 @@ including:
    :caption: The lesson
 
    intro   
-
+   quantum_states
+   
 .. toctree::
    :maxdepth: 1
    :caption: Reference
