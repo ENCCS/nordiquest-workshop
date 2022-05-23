@@ -4,6 +4,8 @@ channels:
 dependencies:
  - python=3.9
  - pip
+ - matplotlib
+ - jupyterlab
  - r-base=3.6
  - r-tidyverse
  - rpy2
