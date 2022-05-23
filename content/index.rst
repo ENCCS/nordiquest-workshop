@@ -55,6 +55,7 @@ including:
    :caption: The lesson
 
    intro   
+   example
    quantum_states
    
 .. toctree::
