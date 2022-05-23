@@ -33,7 +33,15 @@ including:
    and some experience working in a Unix environment are desirable. No
    previous experience with quantum computers expected.
 
+.. callout:: Run on Binder
 
+   All notebooks contained in this material can be launched on
+   `mybinder.org <https://mybinder.org/>`__ for interactive exploration
+   and exercise work. Click the badge below to spin up
+   an instance in the cloud.
+
+   .. image:: https://mybinder.org/badge_logo.svg
+      :target: https://mybinder.org/v2/gh/https%3A%2F%2Fenccs.github.io%2FNordIQuEst-workshop/HEAD	     
 
 
 .. csv-table::
