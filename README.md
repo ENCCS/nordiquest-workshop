@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ENCCS/NordIQuEst-workshop/HEAD)
+
 # ENCCS/NordIQuEst lesson on Quantum Computing and hybrid HPC-QC systems
 
 ENCCS has joined forces with NordIQuEst to deliver two-day training workshops 
