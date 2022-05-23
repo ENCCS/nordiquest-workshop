@@ -1,0 +1,11 @@
+name: qcomp
+channels:
+ - conda-forge
+dependencies:
+ - python=3.9
+ - pip
+ - r-base=3.6
+ - r-tidyverse
+ - rpy2
+ - pip:
+     - qiskit
