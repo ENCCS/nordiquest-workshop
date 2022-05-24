@@ -26,6 +26,8 @@ including:
 - Overview of the main QC hardware approaches
 - Integration of QC with classical computing: hybrid classical/quantum
   algorithms and HPC-QC systems.
+- Introduction to quantum software testing with Quito tool
+  
 
 .. prereq::
 
