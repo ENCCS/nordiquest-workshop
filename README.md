@@ -9,7 +9,7 @@ covering the fundamentals of quantum computing (QC), including:
 - QC programming in high-level languages for use cases in optimisation, finance and quantum chemistry followed by testing quantum programs to esure their correctness
 - Overview of the main QC hardware approaches
 - Integration of QC with classical computing: hybrid classical/quantum algorithms and HPC-QC systems.
-
+- Introduction to quantum software testing with Quito tool
 
 ### Prerequisites
 
