@@ -62,7 +62,8 @@ including:
    :maxdepth: 1
    :caption: The lesson
 
-   intro   
+   intro
+   quito	    
    example
    quantum_states
    
