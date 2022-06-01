@@ -1,6 +1,6 @@
-Sphinx
+sphinx
 sphinx_rtd_theme
 sphinx_rtd_theme_ext_color_contrast
-myst_nb
+myst-nb
 sphinx-lesson
 jupyter-sphinx
