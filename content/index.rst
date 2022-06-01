@@ -65,6 +65,9 @@ including:
    :caption: The lesson
 
    intro
+   E1_qc-1
+   E1_qc-2
+   E1_qc-3
    quito	    
    example
    quantum_states
