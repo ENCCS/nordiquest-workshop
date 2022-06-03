@@ -63,18 +63,24 @@ including:
 
 .. toctree::
    :maxdepth: 1
-   :caption: The lesson
+   :caption: Lecture slides
 
    landscape
    introduction
+   hybrid_algorithms
+   example
+   quantum_states
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Hands-on exercises
+
    E1_qc-1
    E1_qc-2
    E1_qc-3
-   hybrid_algorithms
    quito	    
-   example
-   quantum_states
-   
+
+	     
 .. toctree::
    :maxdepth: 1
    :caption: Reference
