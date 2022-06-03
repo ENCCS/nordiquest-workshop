@@ -2,7 +2,7 @@
 
 ## Slides
 
-{download}`Extra material <L2_Qubits_and_gates_ENCCS_8Jun2022.pdf>`
+{download}`Slides <L2_Qubits_and_gates_ENCCS_8Jun2022.pdf>`
 
 
 ## Extra material and exercises
