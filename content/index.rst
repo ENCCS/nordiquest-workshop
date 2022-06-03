@@ -111,7 +111,7 @@ including:
    :maxdepth: 1
    :caption: Reference
 
-   example
+   notebooks/example
    quick-reference
    guide
 
