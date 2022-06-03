@@ -54,14 +54,14 @@ including:
    45 min ; :doc:`introduction`
    45 min ; :doc:`qc_hardware`   
    45 min ; :doc:`programming_qc`
-   45 min ; :doc:`E1_qc-1`
-   45 min ; :doc:`E1_qc-2`  
-   45 min ; :doc:`E1_qc-3`
+   45 min ; :doc:`notebooks/E1_qc-1`
+   45 min ; :doc:`notebooks/E1_qc-2`  
+   45 min ; :doc:`notebooks/E1_qc-3`
    45 min ; :doc:`hybrid_hpc_qc`
    45 min ; :doc:`software_stack_overview`
    45 min ; :doc:`hybrid_algorithms`
    45 min ; :doc:`qc_testing`
-   45 min ; :doc:`quito`
+   45 min ; :doc:`notebooks/quito`
    45 min ; :doc:`use_case_optimization`
    45 min ; :doc:`use_case_qchem` 	   
 
@@ -85,9 +85,9 @@ including:
    :maxdepth: 1
    :caption: Day 1 hands-on
 
-   E1_qc-1
-   E1_qc-2
-   E1_qc-3
+   notebooks/E1_qc-1
+   notebooks/E1_qc-2
+   notebooks/E1_qc-3
    
 .. toctree::
    :maxdepth: 1
@@ -102,7 +102,7 @@ including:
    :maxdepth: 1
    :caption: Day 2 hands-on
 
-   quito
+   notebooks/quito
    use_case_optimization
    use_case_qchem
 
