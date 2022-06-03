@@ -23,7 +23,7 @@ With a working Anaconda/miniconda installation, you can now create a new conda
 environment with a recent Python version:
 
 ```console
-$ conda create -n qcomp python=3
+$ conda create -n qcomp python=3.9
 ```
 
 Before installing packages, activate the new environment:
