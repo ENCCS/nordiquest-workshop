@@ -1,4 +1,4 @@
-# Programming Quantum Computers - Software tools zoo
+# Introduction to high-level languages for QC
 
 ## Slides
 
