@@ -54,7 +54,8 @@ including:
    45 min ; :doc:`introduction`   
    20 min ; :doc:`quantum_states`
    45 min ; :doc:`hybrid_algorithms`
-
+   45 min ; :doc:`programming_qc`
+   
 .. toctree::
    :maxdepth: 1
    :caption: Preparation
@@ -63,21 +64,31 @@ including:
 
 .. toctree::
    :maxdepth: 1
-   :caption: Lecture slides
+   :caption: Day 1 lectures
 
    landscape
    introduction
-   hybrid_algorithms
-   example
-   quantum_states
+   qc_hardware
+   programming_qc
 
 .. toctree::
    :maxdepth: 1
-   :caption: Hands-on exercises
+   :caption: Day 1 hands-on
 
    E1_qc-1
    E1_qc-2
    E1_qc-3
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 2 lectures
+
+   hybrid_algorithms
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 2 hands-on
+
    quito	    
 
 	     
@@ -85,6 +96,7 @@ including:
    :maxdepth: 1
    :caption: Reference
 
+   example
    quick-reference
    guide
 
