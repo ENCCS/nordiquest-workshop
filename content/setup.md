@@ -6,7 +6,7 @@ The following packages are needed:
 
 - Python 3.7 or higher
 - [Qiskit](https://qiskit.org/)
-
+- [Quito](https://github.com/Simula-COMPLEX/quito)
 
 ## Local installation
 
@@ -41,8 +41,38 @@ To install Qiskit, open a terminal window and type:
    $ pip install qiskit
 ```
 
+You will also need the visualization toolkit in Qiskit. To install it, type 
 
-## Using mybinder.org
+```console
+$ pip install qiskit[visualization]
+```
 
-WRITEME
+**Note:** If you are using the zsh terminal (standard on newer versions of MacOS), you need to use quotes:
+
+```console
+$ pip install 'qiskit[visualization]'
+```
+
+### Quito
+
+First clone the Quito repository:
+
+```console
+$ git clone https://github.com/Simula-COMPLEX/quito.git
+```
+
+Then install its dependencies:
+
+```console
+$ pip install rpy2
+```
+
+
+## Running in the cloud
+
+As an alternative to installing packages locally, you can also click the 
+"launch binder" button on the front page. This will spin up a cloud instance 
+on mybinder.org with all dependencies installed.
+
+
 
