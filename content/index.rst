@@ -43,8 +43,8 @@ including:
    an instance in the cloud.
 
    .. image:: https://mybinder.org/badge_logo.svg
-      :target: https://mybinder.org/v2/gh/https%3A%2F%2Fenccs.github.io%2FNordIQuEst-workshop/HEAD	     
-
+	      :target: https://mybinder.org/v2/gh/ENCCS/NordIQuEst-workshop/HEAD	       
+	       
 
 .. csv-table::
    :widths: auto
