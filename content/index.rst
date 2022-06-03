@@ -50,7 +50,8 @@ including:
    :widths: auto
    :delim: ;
 
-   20 min ; :doc:`intro`
+   45 min ; :doc:`landscape`
+   45 min ; :doc:`introduction`   
    20 min ; :doc:`quantum_states`
 
 
@@ -64,7 +65,8 @@ including:
    :maxdepth: 1
    :caption: The lesson
 
-   intro
+   landscape
+   introduction
    E1_qc-1
    E1_qc-2
    E1_qc-3
