@@ -53,7 +53,7 @@ including:
    45 min ; :doc:`landscape`
    45 min ; :doc:`introduction`   
    20 min ; :doc:`quantum_states`
-
+   45 min ; :doc:`hybrid_algorithms`
 
 .. toctree::
    :maxdepth: 1
@@ -70,6 +70,7 @@ including:
    E1_qc-1
    E1_qc-2
    E1_qc-3
+   hybrid_algorithms
    quito	    
    example
    quantum_states
