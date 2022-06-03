@@ -1,5 +1,6 @@
-# Introduction
+# The HPC-QC landscape
 
-WRITEME
+Link to lecture notes
+
 
 
