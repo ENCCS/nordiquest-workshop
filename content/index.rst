@@ -83,7 +83,10 @@ including:
    :maxdepth: 1
    :caption: Day 2 lectures
 
+   hybrid_hpc_qc
+   software_stack_overview
    hybrid_algorithms
+   qc_testing
    
 .. toctree::
    :maxdepth: 1
