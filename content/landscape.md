@@ -1,6 +1,11 @@
 # The HPC-QC landscape
 
-WRITEME
+## Slides
+
+{download}`Slides <ENCCS_L1_red.pdf>`
+
+
+
 
 
 
