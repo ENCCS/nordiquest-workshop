@@ -4,8 +4,16 @@ This page provides instructions for setting up the software environment
 required to do the exercises in the lesson.
 The following packages are needed:
 
-- Python 3.7 or higher
-- [Qiskit](https://qiskit.org/)
+- python=3.9
+- numpy
+- matplotlib
+- jupyterlab
+- qiskit
+- qiskit[visualization]
+- pylatexenc
+- r-base=3.6
+- r-tidyverse
+- rpy2
 - [Quito](https://github.com/Simula-COMPLEX/quito)
 
 ## Local installation
@@ -20,53 +28,28 @@ computer, download and install miniconda (a smaller distribution than Anaconda)
 by following the [official documentation](https://docs.conda.io/en/latest/miniconda.html).
 
 With a working Anaconda/miniconda installation, you can now create a new conda
-environment with a recent Python version:
+environment with all the required packages by:
 
 ```console
-$ conda create -n qcomp python=3.9
+$ conda env create -f https://github.com/ENCCS/NordIQuEst-workshop/blob/main/environment.yml
 ```
 
-Before installing packages, activate the new environment:
+Before using the environment you need to activate it:
 
 ```console
 $ conda activate qcomp
 ```
 
-
-### Qiskit
-
-To install Qiskit, open a terminal window and type:
-
-```console
-   $ pip install qiskit
-```
-
-You will also need the visualization toolkit in Qiskit. To install it, type 
-
-```console
-$ pip install qiskit[visualization]
-```
-
-**Note:** If you are using the zsh terminal (standard on newer versions of MacOS), you need to use quotes:
-
-```console
-$ pip install 'qiskit[visualization]'
-```
-
 ### Quito
 
-First clone the Quito repository:
+First clone the repository:
 
 ```console
 $ git clone https://github.com/Simula-COMPLEX/quito.git
 ```
 
-Then install its dependencies:
-
-```console
-$ pip install rpy2
-```
-
+To use Quito one calls directly the script
+`quito/Quito_CoverageRunning/quito.py`.
 
 ## Running in the cloud
 
