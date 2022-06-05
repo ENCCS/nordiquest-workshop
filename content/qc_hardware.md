@@ -1,6 +1,10 @@
 # Overview of different QC hardware approaches and QC types
 
-WRITEME
+## Slides
+
+{download}`Slides <ENCCS_L3.pdf>`
+
+
 
 
 
