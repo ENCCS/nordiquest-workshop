@@ -107,7 +107,8 @@ including:
 
    notebooks/quito
    use_case_optimization
-   use_case_qchem
+   notebooks/E2_VQE-H2
+
 
 	     
 .. toctree::
