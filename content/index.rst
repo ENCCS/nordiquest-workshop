@@ -43,7 +43,10 @@ including:
    an instance in the cloud.
 
    .. image:: https://mybinder.org/badge_logo.svg
-	      :target: https://mybinder.org/v2/gh/ENCCS/NordIQuEst-workshop/HEAD	       
+	      :target: https://mybinder.org/v2/gh/ENCCS/NordIQuEst-workshop/HEAD
+
+   In the JupyterLab file browser navigate to ``content/notebooks`` to find
+   the hands-on exercise material.
 	       
 
 .. csv-table::
