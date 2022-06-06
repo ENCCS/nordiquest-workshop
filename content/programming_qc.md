@@ -2,7 +2,7 @@
 
 ## Slides
 
-{download}`Slides <L4-qs-zoo.pdf>`
+{download}`Slides <slides/L4-qs-zoo.pdf>`
 
 
 

@@ -2,7 +2,7 @@
 
 ## Slides
 
-{download}`Slides <ENCCS_L1_red.pdf>`
+{download}`Slides <slides/ENCCS_L1_red.pdf>`
 
 
 
