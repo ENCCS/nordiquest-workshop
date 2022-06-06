@@ -62,11 +62,13 @@ including:
    45 min ; :doc:`notebooks/E1_qc-3`
    45 min ; :doc:`hybrid_hpc_qc`
    45 min ; :doc:`software_stack_overview`
-   45 min ; :doc:`hybrid_algorithms`
+   15 min ; :doc:`hybrid_algorithms`
+   15 min ; :doc:`variational_methods`   
    45 min ; :doc:`qc_testing`
    45 min ; :doc:`notebooks/quito`
    45 min ; :doc:`use_case_optimization`
-   45 min ; :doc:`use_case_qchem` 	   
+   45 min ; :doc:`notebooks/E2_VQE-H2`
+   
 
    
 .. toctree::
@@ -99,6 +101,7 @@ including:
    hybrid_hpc_qc
    software_stack_overview
    hybrid_algorithms
+   variational_methods   
    qc_testing
    
 .. toctree::
