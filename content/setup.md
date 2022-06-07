@@ -31,7 +31,7 @@ With a working Anaconda/miniconda installation, you can now create a new conda
 environment with all the required packages by:
 
 ```console
-$ conda env create -f https://github.com/ENCCS/NordIQuEst-workshop/blob/main/environment.yml
+$ conda env create -f https://raw.githubusercontent.com/ENCCS/NordIQuEst-workshop/main/environment.yml
 ```
 
 Before using the environment you need to activate it:
@@ -49,7 +49,7 @@ $ git clone https://github.com/Simula-COMPLEX/quito.git
 ```
 
 To use Quito one calls directly the script
-`quito/Quito_CoverageRunning/quito.py`.
+`python quito/Quito_CoverageRunning/quito.py`.
 
 ## Running in the cloud
 
