@@ -51,11 +51,35 @@ $ git clone https://github.com/Simula-COMPLEX/quito.git
 To use Quito one calls directly the script
 `python quito/Quito_CoverageRunning/quito.py`.
 
+### Exercises
+
+All exercises are contained in Jupyter notebooks. You can work in two 
+different ways:
+
+1. Create a new Jupyter notebook using JupyterLab. Copy-paste code cells from 
+   the hands-on episodes of this lesson. Edit as needed and run.
+   
+2. Clone this repository to access the complete notebooks:
+
+   ```console
+   $ git clone https://github.com/ENCCS/NordIQuEst-workshop.git
+   $ cd NordIQuEst-workshop/content/notebooks
+   $ jupyter-lab
+
 ## Running in the cloud
 
 As an alternative to installing packages locally, you can also click the 
 "launch binder" button on the front page. This will spin up a cloud instance 
 on mybinder.org with all dependencies installed.
+
+### Exercises
+
+After the Binder image spins up and you see the JupyterLab interface, 
+navigate to the `/content/notebooks` directory in the left-hand file browser
+to see the exercise notebooks.
+You can also create new notebooks and copy-paste code cells and edit them 
+as needed.
+
 
 
 
