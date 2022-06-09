@@ -1,6 +1,9 @@
 # The hybrid HPC-QC approach
 
-WRITEME
+## Slides
+
+{download}`Slides <slides/L5_Hybrid-HPC+QC-intro.pdf>`
+
 
 
 
