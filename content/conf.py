@@ -137,3 +137,11 @@ DIRECTIVES = [SignatureDirective, ParametersDirective, TypealongDirective]
 def setup(app):
     for obj in DIRECTIVES:
         app.add_directive(obj.cssname(), obj)
+
+import os
+if os.environ.get('GITHUB_REF', '') == 'refs/heads/main':
+    html_js_files = [
+        ('https://plausible.io/js/script.js', {"data-domain": "enccs.github.io/NordIQuEst-workshop", "defer": "\
+defer"}),
+    ]
+        
