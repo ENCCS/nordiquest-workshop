@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use case: Optimization &mdash; Introduction to Quantum Computing &amp; Hybrid HPC-QC Systems  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script data-domain="enccs.github.io/nordiquest-workshop" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Example episode" href="../example/" />
+    <link rel="prev" title="Use case: Quantum chemistry" href="../E2_VQE-H2/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            Introduction to Quantum Computing & Hybrid HPC-QC Systems
+              <img src="../../_static/ENCCS-NordIQuEst.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Installation and setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 1 lectures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../landscape/">The HPC-QC landscape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction to digital quantum computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qc_hardware/">Overview of different QC hardware approaches and QC types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_qc/">Introduction to high-level languages for QC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 1 hands-on</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-1/"><strong>Quantum programming I</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-2/"><strong>Quantum programming II</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-3/"><strong>Quantum programming III</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 2 lectures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hybrid_hpc_qc/">The hybrid HPC-QC approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software_stack_overview/">Overview of the software stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hybrid_algorithms/">Hybrid classical/quantum algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qc_testing/">Quantum software testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 2 hands-on</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quito/">Quantum software testing with Quito</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E2_VQE-H2/"><strong>Use case: Quantum chemistry</strong></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Use case: Optimization</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#we-are-going-to-implement-qaoa-for-the-maxcut-problem">We are going to implement QAOA for the MaxCut problem</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example episode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">Introduction to Quantum Computing & Hybrid HPC-QC Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><strong>Use case: Optimization</strong></li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/NordIQuEst-workshop/blob/main/content/notebooks/E2_optimization.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="use-case-optimization">
+<h1><strong>Use case: Optimization</strong><a class="headerlink" href="#use-case-optimization" title="Permalink to this heading"></a></h1>
+<section id="we-are-going-to-implement-qaoa-for-the-maxcut-problem">
+<h2>We are going to implement QAOA for the MaxCut problem<a class="headerlink" href="#we-are-going-to-implement-qaoa-for-the-maxcut-problem" title="Permalink to this heading"></a></h2>
+<p>we start by importing qiskit to simulate circuits and some other basic libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>networkx can be used to handle graphs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)]</span> 
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)),</span> <span class="n">V</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 1]), array([0, 1]))
+</pre></div>
+</div>
+<img alt="../../_images/f27d68de65c7984fae3dd6904834a8bd3a6d6e8387d7e79429bb9dab22acb9e9.png" src="../../_images/f27d68de65c7984fae3dd6904834a8bd3a6d6e8387d7e79429bb9dab22acb9e9.png" />
+</div>
+</div>
+<p>We define a function that creates our circuit</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">createCircuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">depth</span><span class="p">):</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">num_V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">num_V</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">num_V</span><span class="p">)</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+    <span class="c1">#uniform superposition</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_V</span><span class="p">))</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">]</span>
+        <span class="n">beta</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1">#go through all edges and add Rzz gate</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+            <span class="n">i</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">j</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+            <span class="n">circ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">circ</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">gamma</span><span class="p">,</span><span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">circ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">circ</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="c1">#add the mixer</span>
+        <span class="n">circ</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">beta</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="n">num_V</span><span class="p">))</span>
+        <span class="n">circ</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">circ</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">circ</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>draw example circuits</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8da103114e7da1ac71c1d5d62785484f0a8f7f5ce7facde603ab6394f711652a.png" src="../../_images/8da103114e7da1ac71c1d5d62785484f0a8f7f5ce7facde603ab6394f711652a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f6a04d8f4e7bdc0f116d617675aa8d532cdc6a30730f4fa6ebcb9d0cd6a54efc.png" src="../../_images/f6a04d8f4e7bdc0f116d617675aa8d532cdc6a30730f4fa6ebcb9d0cd6a54efc.png" />
+</div>
+</div>
+<p>in order to evaluate a solution we define a function that gives us the cost</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">C</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">C</span> <span class="o">+</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>brute force function that lists all 2^n possibilities and finds the best solutions (use with caution)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">listcosts</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">costs</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">maximum</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">solutions</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">num_V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">num_V</span><span class="p">):</span>
+        <span class="n">binstring</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">num_V</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">binstring</span><span class="p">]</span>
+        <span class="n">costs</span><span class="p">[</span><span class="n">binstring</span><span class="p">]</span><span class="o">=</span><span class="n">cost</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+        <span class="n">maximum</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maximum</span><span class="p">,</span><span class="n">costs</span><span class="p">[</span><span class="n">binstring</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">costs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">costs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">==</span><span class="n">maximum</span><span class="p">:</span>
+            <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">costs</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">solutions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">listcosts</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({&#39;00&#39;: 0.0, &#39;01&#39;: 1.0, &#39;10&#39;: 1.0, &#39;11&#39;: 0.0}, 1.0, [&#39;01&#39;, &#39;10&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>the result of a circuit contains a dictionary containing bitstrings together with how many times they have occured</p>
+<p>we define a function that gives us (an approximation of) the expectationvalue based on this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">expectationValue</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">res</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">results</span>
+    <span class="n">E</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">num_V</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+        <span class="n">n_shots</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">shots</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">counts</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">hexkey</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">hexkey</span><span class="p">]</span>
+            <span class="n">binstring</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexkey</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">num_V</span><span class="p">)</span>
+            <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">binstring</span><span class="p">]</span>
+            <span class="n">e</span> <span class="o">+=</span> <span class="n">cost</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">G</span><span class="p">)</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="n">n_shots</span>
+        <span class="n">E</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">E</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we will use an ideal simulator</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_sim</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>to get the energy/training/cost landscape for depth p=1, we sample the region <span class="math notranslate nohighlight">\([0,\frac{\pi}{2}]^2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuits</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">16</span>
+<span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">gamma</span><span class="p">,</span><span class="n">beta</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sim</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="n">ideal_sim</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="o">=</span><span class="n">expectationValue</span><span class="p">(</span><span class="n">job_sim</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">E</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7b9a2bf88434da7efa5606e0c4674bddf997b230de35dd5f10513729810cea35.png" src="../../_images/7b9a2bf88434da7efa5606e0c4674bddf997b230de35dd5f10513729810cea35.png" />
+</div>
+</div>
+<p>we import minimizers from scipy to do local minimization</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">opt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>the minimize funciton needs a function to evalution, which we create next</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">backend</span><span class="p">):</span>
+    <span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">tcirc</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">tcirc</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">val</span><span class="o">=</span><span class="n">expectationValue</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">getval</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span>\
+                 <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ideal_sim</span><span class="p">),</span>\
+             <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;fatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: -1.000000
+         Iterations: 18
+         Function evaluations: 36
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;xr&#39;</span><span class="p">)</span>
+<span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/550ee1e86c35895d5243b0a25152dc63e727c76ba97cf6fd71b657fad00f4d6d.png" src="../../_images/550ee1e86c35895d5243b0a25152dc63e727c76ba97cf6fd71b657fad00f4d6d.png" />
+</div>
+</div>
+<p>let’s plot the histogram</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">j</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">ideal_sim</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_histogram</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8ef6fe6229175ef69eafa58f22a23c2185a1784a1e5d06ec880a75d1fdf5f246.png" src="../../_images/8ef6fe6229175ef69eafa58f22a23c2185a1784a1e5d06ec880a75d1fdf5f246.png" />
+</div>
+</div>
+<p>next, let’s see the effect of noise</p>
+<p>we use a backend that emulates a real device “Vigo”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.providers.aer</span> <span class="kn">import</span> <span class="n">AerSimulator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.test.mock</span> <span class="kn">import</span> <span class="n">FakeVigo</span>
+<span class="n">device_backend</span> <span class="o">=</span> <span class="n">FakeVigo</span><span class="p">()</span>
+<span class="n">sim_vigo</span> <span class="o">=</span> <span class="n">AerSimulator</span><span class="o">.</span><span class="n">from_backend</span><span class="p">(</span><span class="n">device_backend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_error_map</span><span class="p">(</span><span class="n">FakeVigo</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ce215e9c5739b08e9422e19e5c5c034db3a4b516afcbf510ccc5251f1a993eb8.png" src="../../_images/ce215e9c5739b08e9422e19e5c5c034db3a4b516afcbf510ccc5251f1a993eb8.png" />
+</div>
+</div>
+<p>again, we sample the energy/training/cost landscape for depth p=1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noisy_circuits</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">16</span>
+<span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">gamma</span><span class="p">,</span><span class="n">beta</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">#we need to transpile the circuit for the backend</span>
+        <span class="n">tcirc</span><span class="o">=</span><span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span><span class="n">sim_vigo</span><span class="p">)</span>
+        <span class="n">noisy_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcirc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job_sim_noise</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">noisy_circuits</span><span class="p">,</span> <span class="n">sim_vigo</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_noise</span><span class="o">=</span><span class="n">expectationValue</span><span class="p">(</span><span class="n">job_sim_noise</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">E_noise</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val_noise</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can now compare the landscape from the ideal and noisy simulation</p>
+<p>(the circuit consist of only 2 qubits and 2 cnot gates)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axarr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">vmax</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E_noise</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2e53de1f4e3fdce5a0ba6bb63786dce6f0dd9eea96a3034ddc8210540fdaff7b.png" src="../../_images/2e53de1f4e3fdce5a0ba6bb63786dce6f0dd9eea96a3034ddc8210540fdaff7b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_noise</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">getval</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>\
+                       <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sim_vigo</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span>\
+             <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;fatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: -0.894897
+         Iterations: 20
+         Function evaluations: 48
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axarr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">vmax</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E_noise</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;xr&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out_noise</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">out_noise</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c4ccedc8d35537228e003c27779e48b8d155725c41469e51a909388aa53c768f.png" src="../../_images/c4ccedc8d35537228e003c27779e48b8d155725c41469e51a909388aa53c768f.png" />
+</div>
+</div>
+<p>let’s plot the histogram. How did the noise effect it?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">out_noise</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tcirc</span><span class="o">=</span><span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span><span class="n">sim_vigo</span><span class="p">)</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">tcirc</span><span class="p">,</span> <span class="n">sim_vigo</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_histogram</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7ca5375e5c871f4eefc345755b80328bd0e560d00ec61d4c56da79acf0781f90.png" src="../../_images/7ca5375e5c871f4eefc345755b80328bd0e560d00ec61d4c56da79acf0781f90.png" />
+</div>
+</div>
+<p>finally, let’s create a larger circuit</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)]</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8b7d0f35b6fc21afadb838bcd92f145d3f15e9deaac02d93fee7290b6d2ef465.png" src="../../_images/8b7d0f35b6fc21afadb838bcd92f145d3f15e9deaac02d93fee7290b6d2ef465.png" />
+</div>
+</div>
+<p>what are the solutions?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">maxcost</span><span class="o">=</span><span class="n">listcosts</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">maxcost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0 [&#39;01100&#39;, &#39;01101&#39;, &#39;10010&#39;, &#39;10011&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>how does the circuit look?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6076d2b592107ea1f3a62cca29ec4f7bf516e6a637e3b685960f4230c9318f70.png" src="../../_images/6076d2b592107ea1f3a62cca29ec4f7bf516e6a637e3b685960f4230c9318f70.png" />
+</div>
+</div>
+<p>how does the circuit look on a real device?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gate_map</span><span class="p">(</span><span class="n">FakeVigo</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9cdfefdcdfa3fc0dc22288a97d02eb91a8ddf40f26c68cc9512e09d6d5913833.png" src="../../_images/9cdfefdcdfa3fc0dc22288a97d02eb91a8ddf40f26c68cc9512e09d6d5913833.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpile</span><span class="p">(</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">backend</span><span class="o">=</span><span class="n">sim_vigo</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1c38c712d5332813c3eebd08c50f3f4e30165cf48aed49a811eb2a23b50013b5.png" src="../../_images/1c38c712d5332813c3eebd08c50f3f4e30165cf48aed49a811eb2a23b50013b5.png" />
+</div>
+</div>
+<p>create energy landscapes for ideal and noisy simulations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">circuits</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">16</span>
+<span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">gamma</span><span class="p">,</span><span class="n">beta</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="n">job_sim</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuits</span><span class="p">,</span> <span class="n">ideal_sim</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">val</span><span class="o">=</span><span class="n">expectationValue</span><span class="p">(</span><span class="n">job_sim</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">E</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noisy_circuits</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">16</span>
+<span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">gamma</span><span class="p">,</span><span class="n">beta</span><span class="p">)),</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1">#we need to transpile the circuit for the backend</span>
+        <span class="n">tcirc</span><span class="o">=</span><span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span><span class="n">sim_vigo</span><span class="p">)</span>
+        <span class="n">noisy_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcirc</span><span class="p">)</span>
+
+<span class="n">job_sim_noisy</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">noisy_circuits</span><span class="p">,</span> <span class="n">sim_vigo</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">val_noisy</span><span class="o">=</span><span class="n">expectationValue</span><span class="p">(</span><span class="n">job_sim_noisy</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">E_noise</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val_noisy</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>a comparison of the energy landscapes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axarr</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">vmax</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">E_noise</span><span class="p">))</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">E_noise</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">)</span>
+<span class="c1"># _=axarr[0].plot(out.x[1],out.x[0],&#39;xr&#39;)</span>
+<span class="c1"># _=axarr[1].plot(out_noise.x[1],out_noise.x[0],&#39;ok&#39;)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+    <span class="n">_</span><span class="o">=</span><span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e0816804e632bdf0010d8e1c49001efee0b3468886080991a1f767be9dd72d94.png" src="../../_images/e0816804e632bdf0010d8e1c49001efee0b3468886080991a1f767be9dd72d94.png" />
+</div>
+</div>
+<p>histograms of the best solution at depth p=1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">getval</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>\
+                       <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ideal_sim</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span>\
+             <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;fatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span> <span class="n">ideal_sim</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: -3.890503
+         Iterations: 14
+         Function evaluations: 28
+</pre></div>
+</div>
+<img alt="../../_images/6fdde514a77ccbb3ace6e6ca0a4cd29a3803293fab74b1e0519e171addaa07a8.png" src="../../_images/6fdde514a77ccbb3ace6e6ca0a4cd29a3803293fab74b1e0519e171addaa07a8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_noise</span><span class="o">=</span><span class="n">opt</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">getval</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>\
+                       <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sim_vigo</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span>\
+             <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;fatol&#39;</span><span class="p">:</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">circ</span><span class="o">=</span><span class="n">createCircuit</span><span class="p">(</span><span class="n">out_noise</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tcirc</span><span class="o">=</span><span class="n">transpile</span><span class="p">(</span><span class="n">circ</span><span class="p">,</span><span class="n">sim_vigo</span><span class="p">)</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">tcirc</span><span class="p">,</span> <span class="n">sim_vigo</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Maximum number of function evaluations has been exceeded.
+</pre></div>
+</div>
+<img alt="../../_images/f0833f38c0fe75a4cd2ab7af005671c25a1f150ffc44df523d1ef003d481a776.png" src="../../_images/f0833f38c0fe75a4cd2ab7af005671c25a1f150ffc44df523d1ef003d481a776.png" />
+</div>
+</div>
+<p>Where to go next? Try increasing the depth…</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../E2_VQE-H2/" class="btn btn-neutral float-left" title="Use case: Quantum chemistry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../example/" class="btn btn-neutral float-right" title="Example episode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

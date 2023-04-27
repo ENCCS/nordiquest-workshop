@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum software testing with Quito &mdash; Introduction to Quantum Computing &amp; Hybrid HPC-QC Systems  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script data-domain="enccs.github.io/nordiquest-workshop" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Use case: Quantum chemistry" href="../E2_VQE-H2/" />
+    <link rel="prev" title="Quantum software testing" href="../../qc_testing/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            Introduction to Quantum Computing & Hybrid HPC-QC Systems
+              <img src="../../_static/ENCCS-NordIQuEst.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Installation and setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 1 lectures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../landscape/">The HPC-QC landscape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/">Introduction to digital quantum computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qc_hardware/">Overview of different QC hardware approaches and QC types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_qc/">Introduction to high-level languages for QC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 1 hands-on</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-1/"><strong>Quantum programming I</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-2/"><strong>Quantum programming II</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E1_qc-3/"><strong>Quantum programming III</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 2 lectures</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hybrid_hpc_qc/">The hybrid HPC-QC approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software_stack_overview/">Overview of the software stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hybrid_algorithms/">Hybrid classical/quantum algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../qc_testing/">Quantum software testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 2 hands-on</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum software testing with Quito</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-the-swap-program">Exercise: the SWAP program</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1">Step 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2">Step 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mutant">Mutant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../E2_VQE-H2/"><strong>Use case: Quantum chemistry</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../E2_optimization/"><strong>Use case: Optimization</strong></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example episode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">Introduction to Quantum Computing & Hybrid HPC-QC Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quantum software testing with Quito</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/NordIQuEst-workshop/blob/main/content/notebooks/quito.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-software-testing-with-quito">
+<h1>Quantum software testing with Quito<a class="headerlink" href="#quantum-software-testing-with-quito" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p><font size=4><em><strong>Quito</strong></em></font> is a quantum software testing tool that can automatically generate test suites with three coverage criteria defined on inputs and outputs. These coverage criteria are as following:</p>
+<ul class="simple">
+<li><p>input coverage (IC);</p></li>
+<li><p>output coverage (OC);</p></li>
+<li><p>input-output coverage (IOC).</p></li>
+</ul>
+<p>Quito also defines two test oracles based on program specifications to assess test results, which are:</p>
+<ul class="simple">
+<li><p>wrong output oracle (WOO);</p></li>
+<li><p>output probability oracle (OPO).</p></li>
+</ul>
+<p>You can check the detailed definition and validation in <a class="reference external" href="https://ieeexplore.ieee.org/document/9438603">this paper</a>. A video of the presentation for this paper can be found <a class="reference external" href="https://zenodo.org/record/4660979#.Yo_I15NBxox">here</a>. This tool is proposed in <a class="reference external" href="https://ieeexplore.ieee.org/document/9678798">this paper</a>. A video demo is available <a class="reference external" href="https://www.youtube.com/watch?v=kuI9QaCo8A8">here</a>.</p>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
+<p>Begin by activating the qcomp conda environment, either <a class="reference external" href="https://enccs.github.io/NordIQuEst-workshop/setup/#local-installation">on your own computer</a> or <a class="reference external" href="https://enccs.github.io/NordIQuEst-workshop/setup/#using-mybinder-org">by starting a session on mybinder.org</a>.</p>
+<p>Next clone the Quito package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Simula-COMPLEX/quito.git
+</pre></div>
+</div>
+</section>
+<section id="exercise-the-swap-program">
+<h2>Exercise: the SWAP program<a class="headerlink" href="#exercise-the-swap-program" title="Permalink to this heading"></a></h2>
+<section id="step-1">
+<h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading"></a></h3>
+<p>Consider the following Swap program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">qc</span><span class="p">):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">cswap</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image.png" src="../../_images/swap.png" /></p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(q0_0\)</span> and <span class="math notranslate nohighlight">\(q0_1\)</span> are in the same state, the measured qubit will be 0 with 100% probability.</p></li>
+<li><p>Otherwise, there will be 50% probability for the measure qubit to be either 0 or 1.</p></li>
+</ul>
+</section>
+<section id="step-2">
+<h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading"></a></h3>
+<p>To run Quito on a quantum program you need to create a configuration file (ini file). It should have the following structure:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[program]</span><span class="w"> </span>
+<span class="na">root</span><span class="o">=</span>
+<span class="c1">;(Required) </span>
+<span class="c1">;Description: The absolute root of your quantum program file. </span>
+<span class="na">num_qubit</span><span class="o">=</span>
+<span class="c1">;(Required) </span>
+<span class="c1">;Description: The total number of qubits of your quantum program. </span>
+<span class="na">inputID</span><span class="o">=</span><span class="w"> </span>
+<span class="c1">;(Required) </span>
+<span class="c1">;Description: The ID of input qubits. </span>
+<span class="c1">;Format: A non-repeating sequence separated by commas. </span>
+<span class="na">outputID</span><span class="o">=</span>
+<span class="c1">;(Required) </span>
+<span class="c1">;Description: The ID of output qubits.</span>
+<span class="c1">;Format: A non-repeating sequence separated by commas.</span>
+
+<span class="k">[program_specification_category]</span><span class="w"> </span>
+<span class="na">ps_category</span><span class="o">=</span>
+<span class="c1">;(Required) </span>
+<span class="c1">;Description: The category of your program specification. </span>
+<span class="c1">;Choice: full/partial/no</span>
+
+<span class="k">[quito_configuration]</span><span class="w"> </span>
+<span class="na">coverage_criterion</span><span class="o">=</span>
+<span class="c1">;Description: The coverage criterion. </span>
+<span class="c1">;Choice: IC/OC/IOC </span>
+<span class="na">K</span><span class="o">=</span>
+<span class="c1">;(Optional) </span>
+<span class="c1">;Description: The total number of test suites, K=200 by default. </span>
+<span class="na">M</span><span class="o">=</span>
+<span class="c1">;(Optional) </span>
+<span class="c1">;Description: The number of test suite groups, M=20 by default. </span>
+<span class="na">BUDGET</span><span class="o">=</span>
+<span class="c1">;(Optional) </span>
+<span class="c1">;Description: The budget of test suite size, BUDGET=10*number of inputs by default. </span>
+<span class="na">confidence_level</span><span class="o">=</span>
+<span class="c1">;(Optional) </span>
+<span class="c1">;Description: The confidence level for statistical test, confidence_level=0.01 by default. </span>
+<span class="na">statistical_test</span><span class="o">=</span><span class="s">one-sample Wilcoxon signed rank test</span><span class="w"> </span>
+<span class="c1">;(Optional) </span>
+<span class="c1">;Description: The statistical test for assessment, statistical_test=one-sample Wilcoxon signed rank test by default.</span>
+
+<span class="k">[program_specification]</span><span class="w"> </span>
+<span class="c1">;(Required for full and partial program specification) </span>
+<span class="c1">;Description: The program specification. ;Format:input string,output string=probability</span>
+</pre></div>
+</div>
+<div class="admonition-test-the-swap-program exercise important admonition" id="exercise-0">
+<p class="admonition-title">Test the SWAP program</p>
+<ul class="simple">
+<li><p>Save the <code class="docutils literal notranslate"><span class="pre">run</span></code> function above into a file <code class="docutils literal notranslate"><span class="pre">SWAP.py</span></code> in the root directory of the Quito package.</p></li>
+<li><p>Based on the documented template above, create a configuration.ini file.</p></li>
+<li><p>Run Quito from the repository root by <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">Quito_CoverageRunning/quito.py</span></code>.</p></li>
+<li><p>Enter a number to select the operation and follow the instructions.</p></li>
+<li><p>Inspect the results. Is this what you expected?</p></li>
+</ul>
+</div>
+</section>
+<section id="mutant">
+<h3>Mutant<a class="headerlink" href="#mutant" title="Permalink to this heading"></a></h3>
+<p>Now consider this mutant version:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">qc</span><span class="p">):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">cswap</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="swap_mutant" src="../../_images/swap_mutant.png" /></p>
+<div class="admonition-test-the-mutant-version exercise important admonition" id="exercise-1">
+<p class="admonition-title">Test the mutant version</p>
+<ul class="simple">
+<li><p>What do you think will happen for this version?</p></li>
+<li><p>Reproduce the steps you did for <code class="docutils literal notranslate"><span class="pre">SWAP.py</span></code> for a new program <code class="docutils literal notranslate"><span class="pre">SWAP_mutant.py</span></code></p></li>
+<li><p>Run Quito as earlier and inspect the results. Is it what you expected?</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../qc_testing/" class="btn btn-neutral float-left" title="Quantum software testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../E2_VQE-H2/" class="btn btn-neutral float-right" title="Use case: Quantum chemistry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "ffab4a6e-c9de-4246-9ddc-5f216c97e071",
+   "metadata": {},
+   "source": [
+    "# Quantum software testing with Quito"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "071c451a",
+   "metadata": {},
+   "source": [
+    "## Introduction"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c800dffe",
+   "metadata": {},
+   "source": [
+    "<font size=4>***Quito***</font> is a quantum software testing tool that can automatically generate test suites with three coverage criteria defined on inputs and outputs. These coverage criteria are as following:\n",
+    "\n",
+    "* input coverage (IC);\n",
+    "* output coverage (OC);\n",
+    "* input-output coverage (IOC). \n",
+    "\n",
+    "Quito also defines two test oracles based on program specifications to assess test results, which are:\n",
+    "\n",
+    "* wrong output oracle (WOO);\n",
+    "* output probability oracle (OPO). \n",
+    "\n",
+    "You can check the detailed definition and validation in [this paper](https://ieeexplore.ieee.org/document/9438603). A video of the presentation for this paper can be found [here](https://zenodo.org/record/4660979#.Yo_I15NBxox). This tool is proposed in [this paper](https://ieeexplore.ieee.org/document/9678798). A video demo is available [here](https://www.youtube.com/watch?v=kuI9QaCo8A8)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1cdea7c7-3ecf-4742-b125-7dbaeb6f0451",
+   "metadata": {},
+   "source": [
+    "## Setup"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f702cc34-179e-45fd-b595-1d431ada5203",
+   "metadata": {},
+   "source": [
+    "Begin by activating the qcomp conda environment, either [on your own computer](https://enccs.github.io/NordIQuEst-workshop/setup/#local-installation) or [by starting a session on mybinder.org](https://enccs.github.io/NordIQuEst-workshop/setup/#using-mybinder-org).\n",
+    "\n",
+    "Next clone the Quito package:\n",
+    "```console\n",
+    "$ git clone https://github.com/Simula-COMPLEX/quito.git\n",
+    "```\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f835f190-4834-4cc9-9578-65ff59ef3c6b",
+   "metadata": {},
+   "source": [
+    "## Exercise: the SWAP program"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5f978291-070b-46ae-bbb3-ac68958a8d2f",
+   "metadata": {},
+   "source": [
+    "### Step 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b5e1b23d-1420-4cf3-ab16-4d91992e1847",
+   "metadata": {},
+   "source": [
+    "Consider the following Swap program:\n",
+    "\n",
+    "```python\n",
+    "def run(qc):\n",
+    "    qc.h(2)\n",
+    "    qc.cswap(2,0,1)\n",
+    "    qc.h(2)\n",
+    "    qc.x(2)\n",
+    "\n",
+    "    qc.measure(2,0)\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "59d96d93-8911-4597-a411-c1494e0f8c5c",
+   "metadata": {},
+   "source": [
+    "![image.png](img/swap.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "54f61b91-dfd2-4604-8659-c5fde41d21c1",
+   "metadata": {},
+   "source": [
+    "- If $q0_0$ and $q0_1$ are in the same state, the measured qubit will be 0 with 100% probability. \n",
+    "- Otherwise, there will be 50% probability for the measure qubit to be either 0 or 1."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "761c32db-9864-4956-b6c4-16ef4adb92d1",
+   "metadata": {},
+   "source": [
+    "### Step 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b353c1f4-3856-46ba-9947-14fd1978371c",
+   "metadata": {},
+   "source": [
+    "To run Quito on a quantum program you need to create a configuration file (ini file). It should have the following structure:\n",
+    "\n",
+    "```ini\n",
+    "[program] \n",
+    "root=\n",
+    ";(Required) \n",
+    ";Description: The absolute root of your quantum program file. \n",
+    "num_qubit=\n",
+    ";(Required) \n",
+    ";Description: The total number of qubits of your quantum program. \n",
+    "inputID= \n",
+    ";(Required) \n",
+    ";Description: The ID of input qubits. \n",
+    ";Format: A non-repeating sequence separated by commas. \n",
+    "outputID=\n",
+    ";(Required) \n",
+    ";Description: The ID of output qubits.\n",
+    ";Format: A non-repeating sequence separated by commas.\n",
+    "\n",
+    "[program_specification_category] \n",
+    "ps_category=\n",
+    ";(Required) \n",
+    ";Description: The category of your program specification. \n",
+    ";Choice: full/partial/no\n",
+    "\n",
+    "[quito_configuration] \n",
+    "coverage_criterion=\n",
+    ";Description: The coverage criterion. \n",
+    ";Choice: IC/OC/IOC \n",
+    "K=\n",
+    ";(Optional) \n",
+    ";Description: The total number of test suites, K=200 by default. \n",
+    "M=\n",
+    ";(Optional) \n",
+    ";Description: The number of test suite groups, M=20 by default. \n",
+    "BUDGET=\n",
+    ";(Optional) \n",
+    ";Description: The budget of test suite size, BUDGET=10*number of inputs by default. \n",
+    "confidence_level=\n",
+    ";(Optional) \n",
+    ";Description: The confidence level for statistical test, confidence_level=0.01 by default. \n",
+    "statistical_test=one-sample Wilcoxon signed rank test \n",
+    ";(Optional) \n",
+    ";Description: The statistical test for assessment, statistical_test=one-sample Wilcoxon signed rank test by default.\n",
+    "\n",
+    "[program_specification] \n",
+    ";(Required for full and partial program specification) \n",
+    ";Description: The program specification. ;Format:input string,output string=probability\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6e612fed-d6aa-4bae-ab07-7f6d54c06364",
+   "metadata": {},
+   "source": [
+    "````{exercise} Test the SWAP program\n",
+    "- Save the `run` function above into a file `SWAP.py` in the root directory of the Quito package.\n",
+    "- Based on the documented template above, create a configuration.ini file.\n",
+    "- Run Quito from the repository root by `python Quito_CoverageRunning/quito.py`.\n",
+    "- Enter a number to select the operation and follow the instructions.\n",
+    "- Inspect the results. Is this what you expected?\n",
+    "````"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "42f9168c-47de-4517-b2e8-85a7085368b0",
+   "metadata": {},
+   "source": [
+    "### Mutant"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "800438a9-d8b5-44eb-b37e-f3020e7d34cb",
+   "metadata": {},
+   "source": [
+    "Now consider this mutant version:\n",
+    "\n",
+    "```python\n",
+    "def run(qc):\n",
+    "    qc.x(0)\n",
+    "    qc.h(2)\n",
+    "    qc.cswap(2,0,1)\n",
+    "    qc.h(2)\n",
+    "    qc.x(2)\n",
+    "\n",
+    "    qc.measure(2,0)\n",
+    "```    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1abaef3d-8051-418d-ba63-31dae0430801",
+   "metadata": {},
+   "source": [
+    "![swap_mutant](img/swap_mutant.png)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2981d840-38b1-4358-a979-c43ff0a28a1f",
+   "metadata": {},
+   "source": [
+    "````{exercise} Test the mutant version\n",
+    "- What do you think will happen for this version?\n",
+    "- Reproduce the steps you did for `SWAP.py` for a new program `SWAP_mutant.py`\n",
+    "- Run Quito as earlier and inspect the results. Is it what you expected?\n",
+    "````"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
